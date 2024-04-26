@@ -47,6 +47,8 @@ let showWinner = (userWin) => {
         userChoice++;
         userScore.innerText = userChoice;
         msg.style.backgroundColor = 'green'
+        msg.style.color = 'white'
+        msg.innerText = `user win`
 
     } else {
         console.log("com win");
@@ -54,6 +56,7 @@ let showWinner = (userWin) => {
         msg.style.color = 'white';
         comChoice++;
         computerScore.innerText = comChoice;
+        msg.innerText = 'computer win'
        
 
     }
@@ -67,11 +70,10 @@ let userGame = (everySingleChoiceId) => {
         console.log('math is draw');
     } else if (everySingleChoiceId === 'rock') {
         // paper scissors
-        userWin = computerGame === 'paper'? false : true;
-         
+        userWin = computerGame === 'paper'? false : true;     
     } else if (everySingleChoiceId === 'paper'){
         // rock scissors
-        userWin = computerGame === 'rock' ? false : true
+        userWin = computerGame === 'scissors'? false : true;
     } else if(everySingleChoiceId === 'scissors'){
         // rock paper
         userWin = computerGame === 'rock' ? false : true;
