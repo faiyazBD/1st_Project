@@ -259,4 +259,134 @@ Multiplication.addEventListener('click',() => {
     }
 });
 
+// todo section Started ....
 
+// geting id on index.html
+const tblBody = document.getElementById('tblBody');
+const titleInput = document.getElementById('titleInput');
+const descriptionInput = document.getElementById('descriptionInput');
+const addButton = document.getElementById('addButton');
+const editButton = document.getElementById('editButton');
+const deleteButton = document.getElementById('deleteButton');
+const cancelBtn = document.getElementById('cencalBtn');
+const updateBtn = document.getElementById('updateBtn');
+
+// checking is localStorage any todo or add empty/blank todo
+if (localStorage.getItem('todo')) {
+    // todo jodi thake tahole kicu korta hobe nah
+} else {
+    let newArray = JSON.stringify(new Array());
+    localStorage.setItem('todo',newArray);
+};
+
+// loop through on tableBody tr
+const loopTodos = () => {
+    // free table tr when page is loading
+    tblBody.innerHTML = "";
+
+    // geting todo on localStorage with new variable which name currentItms
+    let currentItms = JSON.parse(localStorage.getItem('todo'));
+    let serial = 1;
+    currentItms.forEach((value,index) => {
+    tblBody.innerHTML += `
+    <tr class="grid grid-cols-4" id="singleTabletr" data-btnid="${index}">
+        <td class="py-2 border-2">${serial}</td>
+        <td class="py-2 border-2">${value.title}</td>
+        <td class="py-2 border-2">${value.description}</td>
+        <td class="py-2 border-2">
+            <button id="editButton" class="bg-blue-500 text-white px-1 py-1 rounded-sm">Edit</button>
+            <button id="deleteButton"  class="bg-red-500 text-white px-1 py-1 rounded-sm">Delete</button>
+        </td>
+    </tr>
+    `
+    serial++;
+    });
+    deleteTodo();
+    modefiyTodo();
+};
+
+
+
+// 
+const addTodo = () => {
+    addButton.addEventListener('click',() => {
+        const testTitle = titleInput.value.trim();
+        const testdescription = descriptionInput.value.trim();
+
+        let newTodo = {
+            title : testTitle,
+            description : testdescription
+        };
+        let currentTodos = JSON.parse(localStorage.getItem('todo'));
+        currentTodos.push(newTodo);
+
+        localStorage.clear()
+        localStorage.setItem('todo',JSON.stringify(currentTodos));
+        titleInput.value ="";
+        descriptionInput.value ="";
+
+        loopTodos();
+        modefiyTodo();
+    });
+};  
+addTodo();
+loopTodos();
+
+function deleteTodo() {
+    let singleTabletr = document.querySelectorAll('#singleTabletr')
+singleTabletr.forEach((value) => {
+    value.querySelector('#deleteButton').addEventListener('click', () => {
+       let currentItms = JSON.parse(localStorage.getItem('todo'));
+       let clickIndex = Number(value.getAttribute('data-btnid'));   // why i convert it to number ? beacause it's string not number
+       let removeClickArray = currentItms.filter((value, index) => {
+        return index !== clickIndex;
+       });
+        localStorage.clear();
+        localStorage.setItem('todo',JSON.stringify(removeClickArray))
+        loopTodos();
+        modefiyTodo();
+    });
+});
+};
+deleteTodo();
+       let editDescription = document.getElementById('editDescription');
+       let editTitle = document.getElementById('editTitle');
+function modefiyTodo() {
+    let singleTabletr = document.querySelectorAll('#singleTabletr')
+singleTabletr.forEach((value) => {
+    value.querySelector('#editButton').addEventListener('click', () => {
+        let hiddenTitleDescription = document.getElementById('hiddenTitleDescription')
+       let currentItms = JSON.parse(localStorage.getItem('todo'));
+       let clickIndex = Number(value.getAttribute('data-btnid'));   // why i convert it to number ? beacause it's string not number
+       editTitle.value = currentItms[clickIndex].title;
+       editDescription.value = currentItms[clickIndex].description;
+        hiddenTitleDescription.style.display = 'block';
+        document.getElementById('hiddenInput').value = clickIndex;
+    });
+});
+};
+cancelBtn.addEventListener('click',() => {
+     editTitle.value = "";
+     editDescription.value = "";
+     hiddenTitleDescription.style.display = "none"
+});
+const updateFunc = () => {
+    updateBtn.addEventListener('click',() => {
+    let editTitle = document.getElementById('editTitle').value
+    let editDescription = document.getElementById('editDescription').value
+    let currentItms = JSON.parse(localStorage.getItem('todo'));
+    let updateIndex = Number(document.getElementById('hiddenInput').value)
+    let newVal = {
+        title : editTitle,
+        description : editDescription
+    }
+    currentItms[updateIndex] = newVal;
+    localStorage.clear();
+    localStorage.setItem('todo',JSON.stringify(currentItms))
+    loopTodos();
+    hiddenTitleDescription.style.display = "none";
+    })
+};
+updateFunc();
+modefiyTodo();
+deleteTodo();

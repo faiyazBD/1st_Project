@@ -13,6 +13,7 @@
     referrerpolicy="no-referrer" 
     />
     <link rel="stylesheet" href="rock.html">
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- css file link here -->
     <link rel="stylesheet" href="css/input.css">
     <link rel="stylesheet" href="css/style.css">
@@ -112,7 +113,7 @@
         </div>
     </section>
     <!-- calculator Section Started -->
-    <section class="py-12">
+    <section class="pt-12">
         <div class="w-full  bg-white dark:bg-gray-800">
             <div class="w-11/12 sm:w-10/12 mx-auto font-roboto_mono">
                 <!-- Calculator Started -->
@@ -169,6 +170,69 @@
         </div>
     </section>
     <!-- calculator Section Ended -->
+    <!-- Todo App Section Started -->
+    <section id="todoApp" class="py-20">
+        <div class="bg-gradient-to-b to-white to-45%  from-gray-100 text-gray-800 dark:bg-gradient-to-b dark:to-45% dark:to-gray-600 dark:from-gray-700 dark:text-gray-200 rounded-full">
+            <div class="w-10/12 sm:w-11/12 mx-auto h-auto text-xs">
+                <!-- todo app Started  -->
+                <div class="w-full h-full flex flex-col justify-center items-center gap-y-16">
+                    <!-- Todo Title Started -->
+                    <div class=" pt-10 text-5xl text-center font-semibold">Todo App</div>
+                    <!-- Todo Title Finished -->
+                    <!-- Todo Desciption Started -->
+                    <div class="">
+                        <table class="border-2">
+                            <thead class="">
+                                <tr class="grid grid-cols-4">
+                                    <th class="py-3 border-2">#</th>
+                                    <th class="py-3 border-2">Title</th>
+                                    <th class="py-3 border-2">Description</th>
+                                    <th class="py-3 border-2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBody" class="text-center">
+                                <!-- <tr class="grid grid-cols-4">
+                                    <td class="py-2 border-2">1</td>
+                                    <td class="py-2 border-2">the field</td>
+                                    <td class="py-2 border-2">Description</td>
+                                    <td class="py-2 border-2">
+                                        <button id="editButton" class="bg-blue-500 text-white px-5 py-1 rounded-sm">Edit</button>
+                                        <button id="deleteButton" class="bg-red-500 text-white px-5 py-1 rounded-sm">Delete</button>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                            <tfoot class="text-center">
+                                <tr class="grid grid-cols-4">
+                                    <td class="h-12 border-2">
+                                        <input id="titleInput" class="w-full h-full outline-none bg-gray-800 text-white text-center rounded " placeholder="Todo Title" type="text">
+                                    </td>
+                                    <td class="h-12 border-2 col-span-2">
+                                        <input class="w-full h-full outline-none text-white bg-gray-800 text-center rounded" type="text" placeholder="Todo Description" id="descriptionInput">
+                                    </td>
+                                    <td class="h-12 border-2 flex justify-center items-center">
+                                        <button id="addButton" class="bg-blue-500 text-white  px-5 py-1 rounded-sm">Add</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div id="hiddenTitleDescription" class="hidden">
+                        <div class="gap-y-3 grid">
+                            <input id="editTitle"  type="text" placeholder="Todo Title" class=" bg-gray-800 text-white py-5 text-center rounded-lg lg:w-[400px] w-[200px]">
+                            <input id="editDescription" type="text" placeholder="Todo Description" class=" bg-gray-800 text-white py-5 text-center rounded-lg h-32 w-[200px] lg:w-[700px]">
+                            <input type="hidden" id="hiddenInput">
+                            <button id="cencalBtn" class="bg-red-500 text-white px-5 py-1 rounded-sm">Cancel</button>
+                            <button id="updateBtn" class="bg-blue-500 text-white px-5 py-1 rounded-sm">Update</button>
+                     
+                        </div>
+                    </div>
+                    <!-- Todo Description Finished -->
+                </div>
+                <!-- todo app Finished -->
+            </div>
+        </div>
+    </section>
+    <!-- Todo App Section Ended -->
     <footer class="">
         <div class="bg-gray-800 text-gray-200">
             <div class="w-11/12 sm:w-10/12 mx-auto">
