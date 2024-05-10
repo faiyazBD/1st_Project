@@ -390,3 +390,53 @@ const updateFunc = () => {
 updateFunc();
 modefiyTodo();
 deleteTodo();
+
+
+// Contact section Started
+let usrName = document.getElementById('usrName');
+let usrEmail = document.getElementById('usrEmail');
+let usrPassword = document.getElementById('usrPassword');
+let usrSignUpBtn = document.getElementById('usrSignUpBtn');
+
+const isValidEmail = (getEmail) => {
+let usr = getEmail;
+let divideWithaddderate = usr.split('@');
+let lastValueAddderate = usr.split("@")[1];
+let divideWithDotted = lastValueAddderate.split('.').length;
+// popular domain names
+let AlldomainNames ='ai online art biz bot cloud club com fun game health inc info'
+const isAllow = AlldomainNames.split(' ');
+
+if (!usr.includes('@') ) {
+    console.log('please Add a @');
+} else if (usr.includes('@@') ) {
+    console.log('two @@ not Allow');
+} else if (usr.indexOf('@') < 8) {
+    console.log('your username is too Short');
+} else if (lastValueAddderate.length === 0) {
+    console.log("Write Something after @ ");
+} else if (usr.startsWith('@')) {
+    console.log('Use A valid Email');
+} else if (lastValueAddderate.length > 20) {
+    console.log('Your User email is Too long');
+} else if ("") {
+    console.log('only 1 @ allow');
+} else if (!lastValueAddderate.includes('.')) {
+    console.log("Use a dotted after Domain name");
+} else if (lastValueAddderate.includes("..")) {
+    console.log("you cant slect multiple dotted");
+} else if (divideWithDotted !== 2 && divideWithDotted !== 3) {
+    console.log('Domain name problem please use a valid domain name');
+} else if (lastValueAddderate.length > 30 ) {
+    console.log("please use a valid domain name");
+} else if (!isNaN(Number(lastValueAddderate.split('.')[0])) || !isNaN(Number(lastValueAddderate.split('.')[1])) || !isNaN(Number(lastValueAddderate.split('.')[2]))) {
+    console.log("you can't use number as a domain name");
+} else if (!isAllow.includes(lastValueAddderate.split('.')[1])) {
+    console.log('sorry your domain name isn"t not found');
+} else {
+    console.log('Email is valid');
+}
+
+// isNaN diyaa value ki number hoy na eta deka hoy , isNaN => not a number
+
+}
