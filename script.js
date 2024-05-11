@@ -399,7 +399,7 @@ let usrPassword = document.getElementById('usrPassword');
 let usrSignUpBtn = document.getElementById('usrSignUpBtn');
 
 const isValidEmail = (getEmail) => {
-let usr = getEmail;
+let usr = getEmail; 
 let divideWithaddderate = usr.split('@');
 let lastValueAddderate = usr.split("@")[1];
 let divideWithDotted = lastValueAddderate.split('.').length;
@@ -440,3 +440,23 @@ if (!usr.includes('@') ) {
 // isNaN diyaa value ki number hoy na eta deka hoy , isNaN => not a number
 
 }
+
+// Accordions section
+
+// first, geting all btn id
+let allButtons = document.querySelectorAll('#AccordionBTN');
+
+// second, I used forEach funtion for geting single btn
+allButtons.forEach((button) => {
+    // third, every btn ee addEventListener laganu holoo
+    button.addEventListener("click",function () {
+        allButtons.forEach((btn)=> {
+            btn.classList.remove('active')  // fourth, every/protekk single btn er class ee jodi kunu active class theke takha taholee remove koraa felbaa.
+        }); // ei code run hoy galooo
+        if (this.classList.contains('active')) {    // fifth, jodi button er class e active class thaka 
+            this.classList.remove('active') // tahole active class remove korta hobe
+        } else {
+            this.classList.add('active')    // sixth, jodi button er class e active class na thaka tahole active class add korta hobe
+        }
+    });
+})
